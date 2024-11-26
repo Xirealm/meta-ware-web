@@ -7,6 +7,13 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
+    ElInput: typeof import('element-plus/es')['ElInput']
+    ElLin: typeof import('element-plus/es')['ElLin']
+    ElLink: typeof import('element-plus/es')['ElLink']
+    ElRadio: typeof import('element-plus/es')['ElRadio']
+    ElText: typeof import('element-plus/es')['ElText']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
     IconEcosystem: typeof import('./src/components/icons/IconEcosystem.vue')['default']
