@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-const code = defineModel<string>('count')
+import { ref,watch } from 'vue'
+// const code = defineModel<string>('count')
+const code = ref('')
 const isSend = ref(false)
 const countdown = ref(60)
 const getCode = async () => {
@@ -14,6 +15,13 @@ const getCode = async () => {
         }
     }, 1000)
 }
+const emits = defineEmits(["getCode"])
+watch(code, (newVal, oldVal) => {
+    if (newVal.length === 4) {
+        console.log(newVal)
+        emits('getCode', code.value)
+    }
+})
 </script>
 
 <template>

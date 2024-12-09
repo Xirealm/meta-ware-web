@@ -13,7 +13,7 @@ const router = createRouter({
     {
       path: "/",
       component: () => import("../layout/Layout.vue"),
-      redirect: "/index",
+      redirect: "/login",
       children: [
         {
           path: "/index",

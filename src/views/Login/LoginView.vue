@@ -55,6 +55,9 @@ const loginByPsw = async () => {
         ElMessage.error("密码错误");
     }
 };
+const getLoginCode = (code:string) => {
+    loginData.value.code = code;
+};
 const loginByCode = async () => {
     const phone = loginData.value.phone;
     const code = loginData.value.code;
@@ -86,7 +89,10 @@ const registerData = ref({
     code: "",
     agree: false,
 });
-  
+
+const getRegisterCode = (code:string) => {
+    registerData.value.code = code;
+};
 const register = async () => {
     const phone = registerData.value.phone;
     if (registerData.value.password1 !== registerData.value.password2) {
@@ -169,7 +175,7 @@ const register = async () => {
                 show-password
                 placeholder="请输入密码" size="large" 
                 v-model = "loginData.password"/>
-            <AuthCode v-else v-model:code="loginData.code"/>
+            <AuthCode v-else @getCode="getLoginCode"/>
             <span class="flex justify-between text-sm text-[#B3B3B3]">
                 <span class="flex items-center">
                     <el-checkbox v-model="loginData.remember"/>
@@ -204,7 +210,7 @@ const register = async () => {
                     <el-input show-password placeholder="请再次输入密码" size="large" v-model = "registerData.password2"/>
                 </el-form-item>
                 <el-form-item label="验证码">
-                    <AuthCode v-model:code="registerData.code" class="w-full"/>
+                    <AuthCode class="w-full" @getCode = "getRegisterCode"/>
                 </el-form-item>
                 <span class="flex justify-between text-sm text-[#B3B3B3]">
                     <span class="flex items-center">
