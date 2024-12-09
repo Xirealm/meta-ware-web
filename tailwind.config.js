@@ -4,7 +4,12 @@ export default {
     "./index.html",
     "./src/**/*.{html,js,ts,vue}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary': '#369fff',
+      },
+    },
+
   },
   plugins: [],
 }

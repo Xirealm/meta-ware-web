@@ -1,0 +1,38 @@
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+    $colors: (
+        'primary': (
+            'base': #369fff,
+        ),
+    ),
+);
+
+.el-input{
+    --el-input-border-radius: 8px;
+    // .el-input__inner{
+    //     border: 2px var(--el-border-style) var(--el-border-color);
+    // }
+}
+
+.el-button{
+    --el-border-radius-base: 8px;
+}
+
+.el-form-item__label{
+    color: black;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-bottom: 8px !important;
+}
+// .el-dialog,
+// .el-message-box {
+//     border-radius: 10px;
+//     // width: 40vw;
+// }
+
+// .el-overlay {
+//     background-color: rgba(0, 0, 0, 0.3);
+// }
+
+// .el-overlay-dialog {
+//     background-color: rgba(0, 0, 0, 0.2);
+// }
