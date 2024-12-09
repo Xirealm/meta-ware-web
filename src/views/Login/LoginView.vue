@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import { ElMessage } from "element-plus";
+import { isAnyFieldEmpty } from "@/utils/emptyCheck";
 import { useRouter } from "vue-router";
 const router = useRouter();
 import { useUserAPI } from "@/services/user";
 const userApi = useUserAPI();
 import { useUserStore } from "@/stores/user";
 const userStore = useUserStore();
-import { ElMessage } from "element-plus";
-import { isAnyFieldEmpty } from "@/utils/emptyCheck";
+
+import AuthCode from "./components/AuthCode.vue";
+
 enum State {
     PswLogin = 0,
     CodeLogin = 1,
@@ -166,14 +169,7 @@ const register = async () => {
                 show-password
                 placeholder="请输入密码" size="large" 
                 v-model = "loginData.password"/>
-            <div v-else class="relative">
-                <el-input placeholder="请输入验证码" size="large" v-model="loginData.code" />
-                <button 
-                    class="absolute right-4 top-1/2 -translate-y-1/2 text-primary
-                    text-sm">
-                    获取验证码
-                </button>
-            </div>
+            <AuthCode v-else v-model:code="loginData.code"/>
             <span class="flex justify-between text-sm text-[#B3B3B3]">
                 <span class="flex items-center">
                     <el-checkbox v-model="loginData.remember"/>
@@ -192,7 +188,7 @@ const register = async () => {
                 其他登陆方式
             </span>
         </div>
-        <div v-else class="flex flex-col justify-between min-h-[440px]">
+        <div v-else class="flex flex-col justify-between min-h-[430px]">
             <el-form
                 label-position="top"
                 label-width="auto"
@@ -208,14 +204,7 @@ const register = async () => {
                     <el-input show-password placeholder="请再次输入密码" size="large" v-model = "registerData.password2"/>
                 </el-form-item>
                 <el-form-item label="验证码">
-                    <div class="relative w-full">
-                        <el-input placeholder="请输入验证码" size="large" v-model="registerData.code" />
-                        <button 
-                            class="absolute right-4 top-1/2 -translate-y-1/2 text-primary
-                            text-sm">
-                            获取验证码
-                        </button>
-                    </div>
+                    <AuthCode v-model:code="registerData.code" class="w-full"/>
                 </el-form-item>
                 <span class="flex justify-between text-sm text-[#B3B3B3]">
                     <span class="flex items-center">
