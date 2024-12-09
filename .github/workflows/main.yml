@@ -1,0 +1,17 @@
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy Stage
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://g-bdui4697.coding.net/api/cci/job/5200070/trigger'
+        method: 'POST'
+        username: ptx0b8udwmjt
+        password: f2b717f1803f3f4d34da74ee68893341577b028b
+        customHeaders: '{"Content-Type": "application/json"}'
+        data: '{"ref":"main","envs":[{"name":"DOCKERFILE_PATH","value":"Dockerfile","sensitive":0},{"name":"REMOTE_SSH_PORT","value":"22","sensitive":0},{"name":"REMOTE_HOST","value":"223.4.250.248","sensitive":0},{"name":"DOCKER_REPO_NAME","value":"digital-avarta","sensitive":0},{"name":"REMOTE_USER_NAME","value":"root","sensitive":0},{"name":"DOCKER_IMAGE_VERSION","value":"latest","sensitive":0},{"name":"REMOTE_CRED","value":"7f3bbb68-45a6-4ee3-9b88-d5c705d62a5b","sensitive":0},{"name":"DOCKER_BUILD_CONTEXT","value":".","sensitive":0},{"name":"DOCKER_IMAGE_NAME","value":"digital-avarta-web","sensitive":0}]}'
