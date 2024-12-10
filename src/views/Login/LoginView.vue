@@ -50,7 +50,9 @@ const loginByPsw = async () => {
     if (res.code === 200) {
         ElMessage.success("登录成功");
         userStore.setToken(res.data);
-        router.push("/");
+        router.push({
+            name:"index"
+        });
     }else{
         ElMessage.error("密码错误");
     }

@@ -1,7 +1,7 @@
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
     $colors: (
         'primary': (
-            'base': #369fff,
+            'base': #52BA87,
         ),
     ),
 );
@@ -22,6 +22,31 @@
     font-size: 15px;
     letter-spacing: 1px;
     margin-bottom: 6px !important;
+}
+
+.el-menu{
+    border-right:0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.el-menu-item,.el-sub-menu__title{
+    border-radius: 10px;
+    height: 50px !important;
+    font-weight: 500 !important;
+    padding:10px 0;
+    span{
+        font-size: 16px;
+    }
+}
+
+.el-menu-item:hover,.el-sub-menu__title:hover {
+    background-color: unset !important;
+}
+
+.el-menu .el-menu-item.is-active {
+    background-color: #005F59 !important;
 }
 // .el-dialog,
 // .el-message-box {
