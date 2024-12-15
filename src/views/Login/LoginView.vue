@@ -46,16 +46,15 @@ const loginByPsw = async () => {
     const phone = loginData.value.phone;
     const password = loginData.value.password;
     const res = await userApi.postLoginByPsw(phone, password)
-    console.log(res);
     if (res.code === 200) {
         ElMessage.success("登录成功");
         userStore.setToken(res.data);
         router.push({
             name:"index"
         });
-    }else{
-        ElMessage.error("密码错误");
+        return
     }
+    ElMessage.error("登录失败");
 };
 const getLoginCode = (code:string) => {
     loginData.value.code = code;
@@ -69,12 +68,10 @@ const loginByCode = async () => {
         // userStore.setToken(res.data);
         router.push({
             name:'index'
-        });
-        console.log(444);
-        
-    }else{
-        ElMessage.error("验证码错误");
+        });  
+        return
     }
+    ElMessage.error("登录失败");
 };
 const login = () => {
     if (state.value === State.PswLogin) {

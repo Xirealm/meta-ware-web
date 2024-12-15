@@ -21,7 +21,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 <template>
     <div class="w-[280px] h-full bg-white border-r-2 border-[#ebebeba5] flex flex-col items-center relative">
         <div class="h-[70px] w-full flex items-center">
-            <img src="@/assets/images/logo_green.png" alt="" class="h-[36px] ml-4">
+            <img src="@/assets/images/logo_green.png" alt="" class="h-[36px] ml-6">
         </div>
         <div class="w-[200px] bg-red-400 mt-12">
             <el-menu
@@ -69,6 +69,6 @@ const handleClose = (key: string, keyPath: string[]) => {
 
 .icon{
     fill: currentColor;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 </style>
