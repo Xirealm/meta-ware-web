@@ -21,18 +21,17 @@ const userAPI = useUserAPI()
 // onMounted(() => {
 //   console.log(route)
 // })
-// const handleOpen = (key: string, keyPath: string[]) => {
-//   console.log(key, keyPath)
-// }
-// const handleClose = (key: string, keyPath: string[]) => {
-//   console.log(key, keyPath)
-// }
+const handleOpen = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
+const handleClose = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
 const logout = async () => {
   userStore.setToken("")
   const result = await userAPI.postLogout()
-  console.log(result);
-  
-//   router.push('/login')
+  console.log(result);  
+  router.push('/login')
 }
 </script>
 

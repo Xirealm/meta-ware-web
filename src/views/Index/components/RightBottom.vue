@@ -18,6 +18,52 @@ const options = [
     label: '过去一月',
   },
 ]
+
+const expertsList = ref([
+  {
+    name: '李珊珊',
+    base: '阳光心理咨询中心',
+    avatar: "/src/assets/experts/expert1.png",
+    allTimes: 10,
+    currentTimes: 9,
+  },
+  {
+    name: '王强',
+    base: '安心心理咨询所',
+    avatar: "/src/assets/experts/expert2.png",
+    allTimes: 15,
+    currentTimes: 6,
+  },
+  {
+    name: '刘丽丽',
+    base: '阳光心理咨询中心',
+    avatar: "/src/assets/experts/expert1.png",
+    allTimes: 12,
+    currentTimes: 7,
+  },
+  {
+    name: '李志强',
+    base: '安心心理咨询所',
+    avatar: "/src/assets/experts/expert2.png",
+    allTimes: 8,
+    currentTimes: 8,
+  },
+  {
+    name: '王丽萍',
+    base: '阳光心理咨询中心',
+    avatar: "/src/assets/experts/expert1.png",
+    allTimes: 10,
+    currentTimes: 3,
+  },
+  {
+    name: '张毅',
+    base: '安心心理咨询所',
+    avatar: "/src/assets/experts/expert2.png",
+    allTimes: 24,
+    currentTimes: 17,
+  },
+])
+
 </script>
 <template>
     <div class="w-full h-full flex flex-col">
@@ -26,7 +72,7 @@ const options = [
             <el-select
                 v-model="value"
                 placeholder="Select"
-                style="width: 240px"
+                style="width: 160px"
                 >
                 <el-option
                     v-for="item in options"
@@ -37,8 +83,8 @@ const options = [
             </el-select>
         </div>
         <div class="flex justify-between flex-wrap flex-1 ">
-            <template v-for="(item,index) in 6">
-                <ExpertData class="w-[46%] h-1/4"/>
+            <template v-for="(item,index) in expertsList">
+                <ExpertData :data = item class="w-[46%] h-1/4"/>
                 <span class="w-full border-b border-1 h-1" v-if="index % 2 === 1 && index !== 6 - 1 "></span>
             </template>
         </div>
