@@ -24,7 +24,7 @@ const progressRate = computed(() => {
                 <span class="text-xs text-[#666666]">{{data.base}}</span>
             </div>
         </div>
-        <div class="flex justify-between items-center  w-[60%]">
+        <div class="flex justify-between items-center w-[55%]">
             <div class="w-[70%]">咨询进度：{{data.currentTimes}}/{{ data.allTimes }}</div>
             <div class="flex gap-1">
                 <div 
