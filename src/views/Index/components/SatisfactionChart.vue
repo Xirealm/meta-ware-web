@@ -5,10 +5,12 @@ import { GaugeChart,BarChart } from 'echarts/charts';
 import {
   GridComponent,
   LegendComponent,
+  TooltipComponent,
 } from "echarts/components";
 import type {
   GridComponentOption,
   LegendComponentOption,
+  TooltipComponentOption,
 } from "echarts/components";
 import type { GaugeSeriesOption,BarSeriesOption } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
@@ -18,6 +20,7 @@ echarts.use([
   BarChart,
   GridComponent,
   LegendComponent,
+  TooltipComponent,
   CanvasRenderer,
 ]);
 
@@ -25,7 +28,9 @@ type EChartsOption = echarts.ComposeOption<
   | GaugeSeriesOption
   | BarSeriesOption
   | GridComponentOption
-  | LegendComponentOption>;
+  | LegendComponentOption
+  | TooltipComponentOption
+>;
 
 var option: EChartsOption;
 
@@ -124,6 +129,14 @@ option = {
   //     }
   //   }
   // ],
+  tooltip: {
+    formatter: '【{b}】主题<br />咨询满意度: {c}%',
+    backgroundColor: '#2c2c2c',
+    borderColor: 'transparent',
+    textStyle: {
+      color: '#fff'
+    }
+  },
   series: [
     // {
     //   type: 'gauge',

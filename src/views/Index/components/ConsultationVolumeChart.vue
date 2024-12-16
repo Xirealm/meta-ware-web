@@ -28,7 +28,12 @@ option = {
   },
   tooltip: {
     trigger: 'axis',
-    formatter: '较前1小时：<br/>咨询量: {c}'
+    formatter: '较前1小时：<br/>咨询量: {c}',
+    backgroundColor: '#2c2c2c',
+    borderColor: 'transparent',
+    textStyle: {
+      color: '#fff'
+    }
   },
   xAxis: {
     type: 'category',
