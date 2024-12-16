@@ -13,14 +13,16 @@ export const useUserAPI = () => {
     });
   }
   /**
-   * 获取验证码
+   * 发送登录验证码
    */
-  const getCode = (phone: string): any => {
-    return http.get("/auth/sendAuthCode", {
-      params: {
-        phone: phone,
-      },
-    });
+  const postLoginCode = (phone: string): any => {
+    return http.post("/auth/sendLoginAuthCode?phone="+ phone);
+  }
+  /**
+   * 发送注册验证码
+   */
+  const postRegisterCode = (phone: string): any => {
+    return http.post("/auth/sendRegisterAuthCode?phone=" + phone);
   }
   /**
    * 验证码登录
@@ -50,7 +52,8 @@ export const useUserAPI = () => {
 
   return {
     postLoginByPsw,
-    getCode,
+    postLoginCode,
+    postRegisterCode,
     postLoginByCode,
     postRegister,
     postLogout,

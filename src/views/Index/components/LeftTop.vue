@@ -21,7 +21,7 @@ const dateRange = ref<string>("");
             </div>
         </div>
         <div class="flex w-full">
-            <InfoCards class="w-[26%] min-w-[240px] mr-4"/>
+            <InfoCards class="w-[26%] h-full min-w-[240px] mr-4"/>
             <el-scrollbar class="w-[74%] h-full">
                 <ConsultationVolumeChart class="w-[100%] h-[37vh]"/>
             </el-scrollbar>

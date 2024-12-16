@@ -10,6 +10,7 @@ import { useUserStore } from "@/stores/user";
 const userStore = useUserStore();
 
 import AuthCode from "./components/AuthCode.vue";
+import { el } from "element-plus/es/locale/index.mjs";
 
 enum State {
     PswLogin = 0,
@@ -42,6 +43,13 @@ const codeLoginData = computed(() => {
         remember: loginData.value.remember,
     }
 });
+const sendLoginCode = async () => {
+    const phone = loginData.value.phone;
+    const res = await userApi.postLoginCode(phone);
+    if (res.code === 200) {
+        ElMessage.success('验证码已发送');
+    }
+};
 const loginByPsw = async () => {
     const phone = loginData.value.phone;
     const password = loginData.value.password;
@@ -57,7 +65,7 @@ const loginByPsw = async () => {
     ElMessage.error("登录失败");
 };
 const getLoginCode = (code:string) => {
-    loginData.value.code = code;
+    loginData.value.code = code
 };
 const loginByCode = async () => {
     const phone = loginData.value.phone;
@@ -65,13 +73,13 @@ const loginByCode = async () => {
     const res = await userApi.postLoginByCode(phone, code)
     if (res.code === 200) {
         ElMessage.success("登录成功");
-        // userStore.setToken(res.data);
+        userStore.setToken(res.data.token);
         router.push({
             name:'index'
         });  
         return
     }
-    ElMessage.error("登录失败");
+    ElMessage.error("登录失败,账户未注册或验证码输入错误");
 };
 const login = () => {
     if (state.value === State.PswLogin) {
@@ -91,6 +99,18 @@ const registerData = ref({
 
 const getRegisterCode = (code:string) => {
     registerData.value.code = code;
+};
+const sendRegisterCode = async () => {
+    const phone = registerData.value.phone;
+    const res = await userApi.postRegisterCode(phone);
+    if (res.code === 200) {
+        ElMessage.success('验证码已发送');
+    } else {
+        ElMessage.error(res.message);
+    }
+    if (res.code === 2011) {
+        state.value = State.PswLogin
+    }
 };
 const register = async () => {
     const phone = registerData.value.phone;
@@ -170,11 +190,11 @@ const register = async () => {
         <div v-if="state !== State.Register" class="flex flex-col justify-evenly min-h-[300px]">
             <el-input placeholder="请输入手机号" size="large" v-model="loginData.phone"/>
             <el-input 
-                v-if="state === State.PswLogin" 
+                v-show = "state === State.PswLogin" 
                 show-password
                 placeholder="请输入密码" size="large" 
                 v-model = "loginData.password"/>
-            <AuthCode v-else @getCode="getLoginCode"/>
+            <AuthCode v-show = "state === State.CodeLogin"  :phone="loginData.phone" @sendCode="sendLoginCode" @getCode= "getLoginCode"/>
             <span class="flex justify-between text-sm text-[#B3B3B3]">
                 <span class="flex items-center">
                     <el-checkbox v-model="loginData.remember"/>
@@ -209,7 +229,12 @@ const register = async () => {
                     <el-input show-password placeholder="请再次输入密码" size="large" v-model = "registerData.password2"/>
                 </el-form-item>
                 <el-form-item label="验证码">
-                    <AuthCode class="w-full" @getCode = "getRegisterCode"/>
+                    <AuthCode 
+                        class="w-full" 
+                        :phone = "registerData.phone" 
+                        @sendCode = " sendRegisterCode" 
+                        @getCode = "getRegisterCode"
+                    />
                 </el-form-item>
                 <span class="flex justify-between text-sm text-[#B3B3B3]">
                     <span class="flex items-center">

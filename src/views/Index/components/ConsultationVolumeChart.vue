@@ -21,7 +21,7 @@ var option: EChartsOption;
 option = {
   grid: {
     left: '0',
-    right: '0',
+    right: '2%',
     top: '3%',
     bottom: '2%',
     containLabel: true
@@ -89,5 +89,5 @@ onMounted(() => {
 
 </script>
 <template>
-    <div id="consultationVolume" style="width: 1800px;"/>
+    <div id="consultationVolume" style="width: 2000px;"/>
 </template>
