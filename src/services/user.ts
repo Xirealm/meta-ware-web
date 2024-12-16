@@ -52,6 +52,7 @@ export const useUserAPI = () => {
     postLoginByPsw,
     getCode,
     postLoginByCode,
-    postRegister
-  }
+    postRegister,
+    postLogout,
+  };
 }

@@ -5,10 +5,10 @@ import Main from './main/Main.vue';
 </script>
 <template>
     <div class="h-full w-full flex">
-        <Aside />
-        <div class="flex flex-col w-full  bg-black">
-            <Header />
-            <Main class="flex-1" />
+        <Aside class="w-[240px]"/>
+        <div class="w-[calc(100vw-240px)] ">
+            <Header class="h-[8vh]"/>
+            <Main class="h-[92vh]" />
         </div>
     </div>
 </template>

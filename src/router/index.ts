@@ -25,11 +25,11 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach(async (to, from) => {
-  const userStore = useUserStore(pinia);
-  if (userStore.token === "" && to.name !== "login") {
-    return "/login";
-  }
-});
+// router.beforeEach(async (to, from) => {
+//   const userStore = useUserStore(pinia);
+//   if (userStore.token === "" && to.name !== "login") {
+//     return "/login";
+//   }
+// });
 
 export default router
