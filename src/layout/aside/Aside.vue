@@ -1,26 +1,24 @@
 <script lang="ts" setup>
-import {
-  Document,
-  Menu as IconMenu,
-  Location,
-  Setting,
-} from '@element-plus/icons-vue'
-import { useRouter,useRoute } from 'vue-router';
+import { RouterView , RouterLink } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 const router = useRouter()
 const route = useRoute()
 import IconDashboard from '@/assets/icons/IconDashboard.vue';
 import IconChart from '@/assets/icons/IconChart.vue';
 import IconMoney from '@/assets/icons/IconMoney.vue';
 import IconHome from '@/assets/icons/IconHome.vue';
+import IconParent from '@/assets/icons/IconParent.vue';
+import IconConsult from '@/assets/icons/IconConsult.vue';
 import IconLogout from '@/assets/icons/IconLogout.vue';
-import { onMounted } from 'vue';
+import { ref,onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
 const userStore = useUserStore()
 import { useUserAPI } from '@/services/user';
 const userAPI = useUserAPI()
-// onMounted(() => {
-//   console.log(route)
-// })
+const currentRouteName = ref('')
+onMounted(() => {
+    currentRouteName.value = route.name as string
+})
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
@@ -42,34 +40,48 @@ const logout = async () => {
         </div>
         <div class="w-[200px] bg-red-400 mt-12">
             <el-menu
-                default-active="1"
+                :default-active="currentRouteName"
                 @open="handleOpen"
                 @close="handleClose"
                 text-color="#8A8A8F"
                 active-text-color="#E1F38E"
             >
-                <el-menu-item index="1">
-                    <IconDashboard class="icon"/>
-                    <span>智慧看板</span>
-                </el-menu-item>
+                <RouterLink :to="{name: 'index'}">
+                    <el-menu-item index="index">
+                        <IconDashboard class="icon"/>
+                        <span>智慧看板</span>
+                    </el-menu-item>
+                </RouterLink>
                 <el-sub-menu index="2">
                     <template #title>
                         <IconChart class="icon"/>
                         <span>教研成果</span>
                     </template>
-                    <el-menu-item index="2-1">
-                        <el-icon><Document /></el-icon>
-                        <span>成果一</span>
-                    </el-menu-item>
+                    <RouterLink :to="{name: 'parentProfile'}">
+                        <el-menu-item index="parentProfile">
+                            <IconParent class="icon"/>
+                            <span>家长档案</span>
+                        </el-menu-item>
+                    </RouterLink>
+                    <RouterLink :to="{name: 'consultationCase'}">
+                        <el-menu-item index="2-2">
+                            <IconConsult class="icon"/>
+                            <span>咨询案例</span>
+                        </el-menu-item>
+                    </RouterLink>
                 </el-sub-menu>
-                <el-menu-item index="3">
-                    <IconMoney class="icon"/>
-                    <span>社会价值</span>
-                </el-menu-item>
-                <el-menu-item index="4">
-                    <IconHome class="icon"/>
-                    <span>系统管理</span>
-                </el-menu-item>
+                <RouterLink :to="{name: 'index'}">
+                    <el-menu-item index="3">
+                        <IconMoney class="icon"/>
+                        <span>社会价值</span>
+                    </el-menu-item>
+                </RouterLink>
+                <RouterLink :to="{name: 'index'}">
+                    <el-menu-item index="4">
+                        <IconHome class="icon"/>
+                        <span>系统管理</span>
+                    </el-menu-item>
+                </RouterLink>
             </el-menu>
         </div>
         <div class="absolute bottom-12 pl-6 text-[#8A8A8F] flex  w-[200px]">
@@ -86,6 +98,7 @@ const logout = async () => {
 
 .icon{
     fill: currentColor;
+    width: 16px;
     margin-right: 15px;
 }
 </style>

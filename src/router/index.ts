@@ -20,7 +20,25 @@ const router = createRouter({
           name: "index",
           component: () => import("../views/Index/IndexView.vue"),
         },
-      ]
+        {
+          path: "/achievements",
+          name: "achievements",
+          children: [
+            {
+              path: "parentProfile",
+              name: "parentProfile",
+              component: () =>
+                import("../views/ParentProfile/ParentProfile.vue"),
+            },
+            {
+              path: "consultationCase",
+              name: "consultationCase",
+              component: () =>
+                import("../views/ConsultationCase/ConsultationCase.vue"),
+            },
+          ],
+        },
+      ],
     },
   ],
 });

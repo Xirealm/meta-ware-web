@@ -29,8 +29,8 @@ const progressRate = computed(() => {
             <div class="flex gap-1">
                 <div 
                     v-for="(item,index) in 10" 
-                    class="h-4 w-1 rounded" 
-                    :class="progressRate >= ((index + 1) / 10)?'bg-green-500':'bg-[#D9D9D9]'">
+                    class="h-4 w-[5px] rounded" 
+                    :class="progressRate >= ((index + 1) / 10)?'bg-[#52BA87]':'bg-[#D9D9D9]'">
                 </div>
             </div>
         </div>

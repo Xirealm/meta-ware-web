@@ -9,6 +9,14 @@
     // }
 }
 
+.el-select__wrapper{
+    --el-border-radius-base:8px
+}
+
+.el-date-editor{
+    --el-input-border-radius: 8px;
+}
+
 .el-button{
     --el-border-radius-base: 8px;
 }

@@ -10,9 +10,9 @@ import IconMap from '@/assets/icons/IconMap.vue';
                 <span class="text-black">清华大学，海淀区</span>
             </div>
         </div>
-        <div class="flex gap-4 items-center mr-5">
+        <div class="flex gap-3 items-center mr-5">
             <img src="@/assets/experts/expert1.png" class="rounded-full" alt="" width="36">
-            <span>用户名</span>
+            <span class="text-sm">用户名</span>
         </div>
     </header>
 </template>
