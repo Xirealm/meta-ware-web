@@ -25,7 +25,7 @@ const progressRate = computed(() => {
             </div>
         </div>
         <div class="flex justify-between items-center w-[55%]">
-            <div class="w-[70%]">咨询进度：{{data.currentTimes}}/{{ data.allTimes }}</div>
+            <div class="w-[125px] shrink-0 text-[#666666]">咨询进度：{{data.currentTimes}}/{{ data.allTimes }}</div>
             <div class="flex gap-1">
                 <div 
                     v-for="(item,index) in 10" 

@@ -41,11 +41,11 @@ const schools = ref(['门头沟区新桥路中学', '大裕中学分校', '门�
         <div class="flex flex-1 relative">
             <SchoolConsultChart class="w-[100%]"/>
             <div class="absolute left-0 top-4 h-[84%] w-[28%] ">
-                <ul class="list-disc pl-4 text-[#52BA87] h-full flex flex-col justify-between text-xs">
-                    <li v-for="item in schools" class="">
-                        <span class="text-[#8A8A8F]">{{ item }}</span>
-                    </li>
-                </ul>
+              <ol class="list-decimal pl-4 h-full text-[#8A8A8F] flex flex-col justify-between text-xs">
+                  <li v-for="item in schools" class="">
+                    <span class="text-[#8A8A8F]">{{ item }}</span>
+                  </li>
+              </ol>
             </div>
         </div>
         <div class="h-[36px] flex items-center justify-end absolute right-0 bottom-0">

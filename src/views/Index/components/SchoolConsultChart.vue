@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted , nextTick , ref } from "vue";
+import { onMounted, nextTick, ref } from "vue";
 import * as echarts from "echarts/core";
 import {
   DatasetComponent,
@@ -43,17 +43,23 @@ option = {
     itemHeight: 8,
     left: 0,
     bottom: 0,
-    icon:'circle'
+    icon: "circle",
   },
   tooltip: {
     formatter: (params: any) => {
-      return schools.value[params.name - 1] + '<br/>' + params.seriesName + "咨询量：" + params.value[params.encode.y[0]]
+      return (
+        schools.value[params.name - 1] +
+        "<br/>" +
+        params.seriesName +
+        "咨询量：" +
+        params.value[params.encode.y[0]]
+      );
     },
-    backgroundColor: '#2c2c2c',
-    borderColor: 'transparent',
+    backgroundColor: "#2c2c2c",
+    borderColor: "transparent",
     textStyle: {
-      color: '#fff'
-    }
+      color: "#fff",
+    },
   },
   dataset: {
     source: [
@@ -66,42 +72,53 @@ option = {
     ],
   },
   xAxis: { type: "category" },
-  yAxis: {},
+  yAxis: {
+    name: "咨询量（次/天）",
+    nameTextStyle: {
+      padding: [0, 0, 0, 0], // 调整单位的位置
+    },
+  },
   // Declare several bar series, each will be mapped
   // to a column of dataset.source by default.
   series: [
     {
       type: "bar",
-      color: "#52BA87"
+      color: "#52BA87",
     },
     {
       type: "bar",
-      color: "#005F59"
-    }
+      color: "#005F59",
+    },
   ],
   itemStyle: {
-    borderRadius: [5,5,0,0]
+    borderRadius: [5, 5, 0, 0],
   },
   grid: {
-    left: '30%',
-    right: '0',
-    top: '10%',
-    bottom: '15%',
-    containLabel: true
-  }
+    left: "30%",
+    right: "0",
+    top: "10%",
+    bottom: "15%",
+    containLabel: true,
+  },
 };
 
-onMounted(async() => {
-  window.addEventListener('resize', () => {
-    myChart.resize()
-  })
-  nextTick()
+onMounted(async () => {
+  window.addEventListener("resize", () => {
+    myChart.resize();
+  });
+  nextTick();
   const chartDom = document.getElementById("schoolConsult")!;
   const myChart = echarts.init(chartDom);
   option && myChart.setOption(option);
 });
 
-const schools = ref(['门头沟区新桥路中学', '大裕中学分校', '门头沟区京师实验中学', '王平中学', '门头沟区潭柘寺中学'])
+const schools = ref([
+  "门头沟区新桥路中学",
+  "大裕中学分校",
+  "门头沟区京师实验中学",
+  "王平中学",
+  "门头沟区潭柘寺中学",
+]);
 </script>
 <template>
   <div id="schoolConsult"></div>
