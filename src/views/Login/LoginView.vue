@@ -10,7 +10,6 @@ import { useUserStore } from "@/stores/user";
 const userStore = useUserStore();
 
 import AuthCode from "./components/AuthCode.vue";
-import { el } from "element-plus/es/locale/index.mjs";
 
 enum State {
     PswLogin = 0,
@@ -23,24 +22,25 @@ const toggleState = () => {
     console.log(state.value);
 };
 
+const remember = ref(false)
 const loginData = ref({
     phone: "",
     password: "",
     code: "",
-    remember: false,
+    // remember: false,
 });
 const pswLoginData = computed(() => {
     return {
         phone: loginData.value.phone,
         password: loginData.value.password,
-        remember: loginData.value.remember,
+        // remember: loginData.value.remember,
     };
 });
 const codeLoginData = computed(() => {
     return {
         phone: loginData.value.phone,
         code: loginData.value.code,
-        remember: loginData.value.remember,
+        // remember: loginData.value.remember,
     }
 });
 const sendLoginCode = async () => {
@@ -197,7 +197,7 @@ const register = async () => {
             <AuthCode v-show = "state === State.CodeLogin"  :phone="loginData.phone" @sendCode="sendLoginCode" @getCode= "getLoginCode"/>
             <span class="flex justify-between text-sm text-[#B3B3B3]">
                 <span class="flex items-center">
-                    <el-checkbox v-model="loginData.remember"/>
+                    <el-checkbox v-model="remember"/>
                     <button class="ml-1">记住账号</button>
                 </span>
                 <button v-if="state === State.PswLogin" class="flex items-center">忘记密码？</button>
