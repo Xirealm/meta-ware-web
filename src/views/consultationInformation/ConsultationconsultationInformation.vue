@@ -4,7 +4,11 @@ import IconSearch from "@/assets/icons/IconSearch.vue";
 import IconSchool from "@/assets/icons/IconSchool.vue";
 import IconMore from "@/assets/icons/IconMore.vue";
 import HazardLevelBar from "@/components/HazardLevelBar.vue";
-import { mockTableData, mockSchoolList } from "@/mock/parentProfileData";
+import {
+  mockTableData,
+  mockSchoolList,
+} from "@/mock/consultationInformationData";
+import ConsultationDetailDialog from "@/components/ConsultationDetailDialog.vue";
 
 const activeSchool = ref(1);
 const schoolList = ref(mockSchoolList);
@@ -49,9 +53,12 @@ const total = ref(mockTableData.length);
 
 // 计算分页后的表格数据
 const paginatedTableData = computed(() => {
+  // 先对数据进行排序
+
+  // 然后进行分页
   const startIndex = (currentPage.value - 1) * parseInt(size.value);
   const endIndex = startIndex + parseInt(size.value);
-  return tableData.value.slice(startIndex, endIndex);
+  return mockTableData.slice(startIndex, endIndex);
 });
 
 // 处理页码改变
@@ -64,19 +71,27 @@ const handleSizeChange = (val: string) => {
   size.value = val;
   currentPage.value = 1; // 重置到第一页
 };
+
+const showDetailDialog = ref(false);
+const currentDetailData = ref(null);
+
+const handleViewDetail = (row: any) => {
+  currentDetailData.value = row;
+  showDetailDialog.value = true;
+};
 </script>
 <template>
   <div class="flex h-full gap-6">
     <!-- 学校列表 -->
     <div
-      class="w-[265px] shrink-0 bg-white rounded-lg flex flex-col flex-center items-center pb-6"
+      class="w-[265px] shrink-0 bg-white rounded-lg flex flex-col flex-center items-center pb-6 pt-4"
     >
-      <h2 class="text-base my-4">门头沟区学校列表</h2>
+      <!-- <h2 class="text-base my-4">福建省</h2> -->
       <!-- 学校搜索框 -->
       <div class="w-[90%]">
         <el-input
           v-model="searchSchoolKeyword"
-          placeholder="搜索学校"
+          placeholder="搜索市区"
           class="input-grey"
           @keyup.enter="handleSearch"
         >
@@ -85,7 +100,7 @@ const handleSizeChange = (val: string) => {
           </template>
         </el-input>
       </div>
-      <el-scrollbar class="px-2 mt-4">
+      <el-scrollbar class="px-2 mt-4 w-[94%]">
         <button
           @click="activeSchool = item.id"
           v-for="(item, index) in schoolList"
@@ -167,7 +182,7 @@ const handleSizeChange = (val: string) => {
         <el-table-column
           prop="hazardLevel"
           width="200"
-          label="危险等级"
+          label="关注等级"
           align="center"
         >
           <template #default="scope">
@@ -177,7 +192,12 @@ const handleSizeChange = (val: string) => {
         <el-table-column label="管理" align="center" width="180">
           <template #default="scope">
             <div class="flex justify-center gap-6">
-              <button class="text-[#005F59] text-[15px]">查看详情</button>
+              <button
+                class="text-[#005F59] text-[15px]"
+                @click="handleViewDetail(scope.row)"
+              >
+                查看详情
+              </button>
               <button class="text-[#FF2D55] text-[15px]">删除</button>
             </div>
           </template>
@@ -210,6 +230,11 @@ const handleSizeChange = (val: string) => {
           @current-change="handleCurrentChange"
         />
       </div>
+      <!-- 添加详情弹窗 -->
+      <ConsultationDetailDialog
+        v-model:visible="showDetailDialog"
+        :data="currentDetailData"
+      />
     </div>
   </div>
 </template>

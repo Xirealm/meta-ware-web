@@ -64,11 +64,11 @@ option = {
   dataset: {
     source: [
       ["学校", "今日", "昨日"],
-      [1, 43.3, 85.8],
-      [2, 93.1, 73.4],
-      [3, 86.4, 65.2],
-      [4, 72.4, 53.9],
-      [5, 122.4, 63.9],
+      [1, 43, 85],
+      [2, 93, 73],
+      [3, 86, 65],
+      [4, 72, 53],
+      [5, 122, 63],
     ],
   },
   xAxis: { type: "category" },
@@ -96,8 +96,8 @@ option = {
   grid: {
     left: "30%",
     right: "0",
-    top: "10%",
-    bottom: "15%",
+    top: "17%",
+    bottom: "12%",
     containLabel: true,
   },
 };
@@ -112,13 +112,7 @@ onMounted(async () => {
   option && myChart.setOption(option);
 });
 
-const schools = ref([
-  "门头沟区新桥路中学",
-  "大裕中学分校",
-  "门头沟区京师实验中学",
-  "王平中学",
-  "门头沟区潭柘寺中学",
-]);
+const schools = ref(["福州市", "厦门市", "泉州市", "漳州市", "莆田市"]);
 </script>
 <template>
   <div id="schoolConsult"></div>

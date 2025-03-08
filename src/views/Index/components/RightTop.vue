@@ -29,12 +29,12 @@ const datas = [
 </script>
 <template>
     <div class="w-full h-full flex flex-col">
-        <h2 class="mb-4 w-full">满意度与主题</h2>
+        <h2 class="mb-4 w-full">重点问题分析</h2>
         <div class="flex w-full justify-center items-center relative">
-            <SatisfactionChart class="w-[28vh] h-[28vh] "/>
+            <SatisfactionChart class="w-[26vh] h-[26vh] "/>
             <div class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
                 <span class="text-2xl text-[#170645] font-bold">88%</span>
-                <span class="text-[#17064563]">咨询满意度</span>
+                <span class="text-[#17064563]">重点问题</span>
             </div>
         </div>
         <div class="w-full px-8 flex items-center ">

@@ -7,7 +7,7 @@ import IconMap from '@/assets/icons/IconMap.vue';
             <IconMap class="mx-3"/>
             <div class="flex flex-col">
                 <span class="text-[#666666] text-sm">当前查看区域</span>
-                <span class="text-black">北京市 · 门头沟区</span>
+                <span class="text-black">福建省</span>
             </div>
         </div>
         <div class="flex gap-3 items-center mr-5">

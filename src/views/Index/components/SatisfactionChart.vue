@@ -130,7 +130,7 @@ option = {
   //   }
   // ],
   tooltip: {
-    formatter: '【{b}】主题<br />咨询满意度: {c}%',
+    formatter: '【{b}】主题<br />占比: {c}%',
     backgroundColor: '#2c2c2c',
     borderColor: 'transparent',
     textStyle: {

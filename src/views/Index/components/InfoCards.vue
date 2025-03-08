@@ -2,19 +2,19 @@
 import { ref } from "vue"
 const infos = ref([
     {
-        title: "注册用户",
+        title: "热线咨询总量",
         value: "10141 人",
         rate:  "+18.6%"
     },
     {
-        title: "完成咨询量",
+        title: "AI热线咨询完成量",
         value: "1225 次",
         rate:  "+3.9%"
     },
     {
-        title: "预警已解决",
-        value: "1023 次",
-        rate:  "+8.4%"
+        title: "咨询满意度",
+        value: "92%",
+        rate:  "+4%"
     },
 ])
 </script>

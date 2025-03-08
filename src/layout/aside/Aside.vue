@@ -52,7 +52,7 @@ const logout = async () => {
                         <span>智慧看板</span>
                     </el-menu-item>
                 </RouterLink>
-                <el-sub-menu index="2">
+                <!-- <el-sub-menu index="2">
                     <template #title>
                         <IconChart class="icon"/>
                         <span>教研成果</span>
@@ -69,19 +69,19 @@ const logout = async () => {
                             <span>咨询案例</span>
                         </el-menu-item>
                     </RouterLink>
-                </el-sub-menu>
-                <RouterLink :to="{name: 'index'}">
-                    <el-menu-item index="3">
-                        <IconMoney class="icon"/>
-                        <span>社会价值</span>
+                </el-sub-menu> -->
+                <RouterLink :to="{name: 'consultationInformation'}">
+                    <el-menu-item index="consultationInformation">
+                        <IconConsult class="icon"/>
+                        <span>来访信息</span>
                     </el-menu-item>
                 </RouterLink>
-                <RouterLink :to="{name: 'index'}">
+                <!-- <RouterLink :to="{name: 'index'}">
                     <el-menu-item index="4">
                         <IconHome class="icon"/>
                         <span>系统管理</span>
                     </el-menu-item>
-                </RouterLink>
+                </RouterLink> -->
             </el-menu>
         </div>
         <div class="absolute bottom-12 pl-6 text-[#8A8A8F] flex  w-[200px]">

@@ -1,0 +1,12 @@
+<template>
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="8" cy="8" r="6" fill="#909399" />
+    <path d="M5 8L7 10L11 6" stroke="white" stroke-width="1.5" />
+  </svg>
+</template>

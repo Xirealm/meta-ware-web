@@ -21,22 +21,12 @@ const router = createRouter({
           component: () => import("../views/Index/IndexView.vue"),
         },
         {
-          path: "/achievements",
-          name: "achievements",
-          children: [
-            {
-              path: "parentProfile",
-              name: "parentProfile",
-              component: () =>
-                import("../views/ParentProfile/ParentProfile.vue"),
-            },
-            {
-              path: "consultationCase",
-              name: "consultationCase",
-              component: () =>
-                import("../views/ConsultationCase/ConsultationCase.vue"),
-            },
-          ],
+          path: "/consultationInformation",
+          name: "consultationInformation",
+          component: () =>
+            import(
+              "../views/consultationInformation/ConsultationconsultationInformation.vue"
+            ),
         },
       ],
     },
